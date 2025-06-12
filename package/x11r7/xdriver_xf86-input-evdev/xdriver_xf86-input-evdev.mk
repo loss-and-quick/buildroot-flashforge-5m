@@ -16,7 +16,10 @@ XDRIVER_XF86_INPUT_EVDEV_DEPENDENCIES = \
 	libevdev \
 	mtdev \
 	xorgproto \
-	xserver_xorg-server \
-	udev
+	xserver_xorg-server 
+
+ifeq ($(BR2_PACKAGE_HAS_UDEV),y)
+XDRIVER_XF86_INPUT_EVDEV_DEPENDENCIES += udev
+endif
 
 $(eval $(autotools-package))

@@ -1,0 +1,64 @@
+From aac329fd2a93651e79c2618f45e85dfbd99cd025 Mon Sep 17 00:00:00 2001
+From: "Enrico Weigelt, metux IT consult" <info@metux.net>
+Date: Mon, 10 Jun 2024 18:45:18 +0200
+Subject: [PATCH] fix FTBS on non-udev target platforms (eg. FreeBSD)
+
+On platforms that don't have libudev at all (eg. FreeBSD), the build
+breaks. The only consumer, EvdevDeviceIsVirtual(), can live well with
+just bailing out directly if libudev isn't present.
+
+Signed-off-by: Enrico Weigelt, metux IT consult <info@metux.net>
+Part-of: <https://gitlab.freedesktop.org/xorg/driver/xf86-input-evdev/-/merge_requests/6>
+---
+ configure.ac | 2 +-
+ src/evdev.c  | 6 ++++++
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 957f9a2..7d071ad 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -45,7 +45,7 @@ XORG_DEFAULT_OPTIONS
+ 
+ # Obtain compiler/linker options from server and required extensions
+ PKG_CHECK_MODULES(XORG, [xorg-server >= 1.12] xproto [inputproto >= 2.1.99.3])
+-PKG_CHECK_MODULES(UDEV, libudev)
++PKG_CHECK_MODULES(UDEV, libudev, [AC_DEFINE(HAVE_LIBUDEV, 1,[libudev support])], [ ])
+ 
+ PKG_CHECK_MODULES(LIBEVDEV, [libevdev >= 0.4])
+ PKG_CHECK_MODULES(MTDEV, mtdev)
+diff --git a/src/evdev.c b/src/evdev.c
+index 6b5eadd..8a236bb 100644
+--- a/src/evdev.c
++++ b/src/evdev.c
+@@ -40,7 +40,9 @@
+ 
+ #include <linux/version.h>
+ #include <sys/stat.h>
++#ifdef HAVE_LIBUDEV
+ #include <libudev.h>
++#endif
+ #include <unistd.h>
+ #include <errno.h>
+ #include <fcntl.h>
+@@ -226,6 +228,7 @@ EvdevIsDuplicate(InputInfoPtr pInfo)
+ static BOOL
+ EvdevDeviceIsVirtual(const char* devicenode)
+ {
++#ifdef HAVE_LIBUDEV
+     struct udev *udev = NULL;
+     struct udev_device *device = NULL;
+     struct stat st;
+@@ -256,6 +259,9 @@ out:
+     udev_device_unref(device);
+     udev_unref(udev);
+     return rc;
++#else
++    return FALSE;
++#endif
+ }
+ 
+ 
+-- 
+2.49.0
+

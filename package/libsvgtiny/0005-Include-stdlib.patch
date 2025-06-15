@@ -1,0 +1,36 @@
+The source files `svgtiny_list.c` and `svgtiny_gradient.c` use `malloc()`
+and `free()` but do not include `<stdlib.h>`, which causes build failures
+on strict ANSI C compilers.
+
+This patch adds the missing include directives to fix compilation errors.
+
+Signed-off-by: minicx <minicx@disroot.org>
+---
+ src/svgtiny_gradient.c | 1 +
+ src/svgtiny_list.c     | 1 +
+ 2 files changed, 2 insertions(+)
+
+--- a/src/svgtiny_list.c	2025-06-15 16:27:31.483586122 +0300
++++ b/src/svgtiny_list.c	2025-06-15 16:35:27.961473782 +0300
+@@ -10,6 +10,7 @@
+  * calls to realloc(), but keeps wasted space low.
+  */
+ 
++#include <stdlib.h>
+ #include <assert.h>
+ #include "svgtiny.h"
+ #include "svgtiny_internal.h"
+
+--- a/src/svgtiny_gradient.c	2025-06-15 16:27:27.608602437 +0300
++++ b/src/svgtiny_gradient.c	2025-06-15 16:35:33.517571624 +0300
+@@ -5,6 +5,7 @@
+  * Copyright 2008 James Bursa <james@semichrome.net>
+  */
+ 
++#include <stdlib.h>
+ #include <assert.h>
+ #include <math.h>
+ #include <string.h>
+
+--
+2.44.0

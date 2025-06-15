@@ -13,6 +13,9 @@ LIBSVGTINY_DEPENDENCIES = \
 LIBSVGTINY_LICENSE = MIT
 LIBSVGTINY_LICENSE_FILES = README
 
+HOST_LIBSVGTINY_DEPENDENCIES = \
+	host-libxml2 host-gperf host-pkgconf host-netsurf-buildsystem
+
 # The libsvgtiny build system cannot build both the shared and static
 # libraries. So when the Buildroot configuration requests to build
 # both the shared and static variants, we build only the shared one.
@@ -44,4 +47,22 @@ define LIBSVGTINY_INSTALL_TARGET_CMDS
 		COMPONENT_TYPE=$(LIBSVGTINY_COMPONENT_TYPE) install
 endef
 
+define HOST_LIBSVGTINY_CONFIGURE_CMDS
+    ln -sf $(HOST_DIR)/share/netsurf-buildsystem $(@D)/build
+endef
+
+# Use $(MAKE1) since parallel build fails
+define HOST_LIBSVGTINY_BUILD_CMDS
+	$(HOST_CONFIGURE_OPTS) \
+      $(MAKE1) -C $(@D) PREFIX= COMPONENT_TYPE=lib-shared
+endef
+
+
+define HOST_LIBSVGTINY_INSTALL_CMDS
+    $(HOST_CONFIGURE_OPTS) \
+		$(MAKE1) -C $(@D) PREFIX= DESTDIR=$(HOST_DIR) \
+        COMPONENT_TYPE=lib-shared install
+endef
+
 $(eval $(generic-package))
+$(eval $(host-generic-package))

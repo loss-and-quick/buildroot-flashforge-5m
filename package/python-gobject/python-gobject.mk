@@ -17,9 +17,14 @@ PYTHON_GOBJECT_DEPENDENCIES = \
 	libglib2 \
 	python3
 
-PYTHON_GOBJECT_CONF_OPTS += \
-	-Dpycairo=disabled \
-	-Dtests=false
+PYTHON_GOBJECT_CONF_OPTS += -Dtests=false
+
+ifeq ($(BR2_PACKAGE_CAIRO),y)
+PYTHON_GOBJECT_CONF_OPTS += -Dpycairo=enabled
+PYTHON_GOBJECT_DEPENDENCIES += python-pycairo
+else
+PYTHON_GOBJECT_CONF_OPTS += -Dpycairo=disabled
+endif
 
 # A sysconfigdata_name must be manually specified or the resulting .so
 # will have a x86_64 prefix, which causes "import gi" to fail.

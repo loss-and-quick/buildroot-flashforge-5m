@@ -42,6 +42,20 @@ endif
 # in-tree code.
 HOST_PYTHON_NUMPY_CONF_OPTS = -Dblas="" -Dlapack=""
 
+# Meson fails to correctly determine the `long double` properties
+# on ARM and AArch64 architectures. This leads to build failures when
+# cross-compiling Python, especially with NumPy.
+#
+# This fix explicitly sets the `sizeof_long_double` and `longdouble_format`
+# for these architectures to the correct values, allowing the build to proceed.
+#
+# See issue for more details: https://github.com/mesonbuild/meson/issues/14313
+ifneq (,$(filter arm aarch64,$(PKG_MESON_TARGET_CPU_FAMILY)))
+PYTHON_NUMPY_MESON_EXTRA_PROPERTIES = \
+    sizeof_long_double=8 \
+    longdouble_format='IEEE_DOUBLE_LE'
+endif
+
 # Fixup the npymath.ini prefix path with actual target staging area where
 # numpy core was built. Without this, target builds using numpy distutils
 # extensions like python-scipy, python-numba cannot find -lnpymath since

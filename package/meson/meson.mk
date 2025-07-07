@@ -4,8 +4,8 @@
 #
 ################################################################################
 
-MESON_VERSION = 1.7.0
-MESON_SITE = https://github.com/mesonbuild/meson/releases/download/$(MESON_VERSION)
+MESON_VERSION = f754c4258805056ed7be09830d96af45215d341b
+MESON_SITE = $(call github,numpy,meson,$(MESON_VERSION))
 MESON_LICENSE = Apache-2.0
 MESON_LICENSE_FILES = COPYING
 MESON_SETUP_TYPE = setuptools

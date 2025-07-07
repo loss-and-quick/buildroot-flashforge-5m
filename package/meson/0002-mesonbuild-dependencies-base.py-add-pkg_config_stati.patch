@@ -22,6 +22,8 @@ Signed-off-by: Romain Naour <romain.naour@gmail.com>
 Signed-off-by: Peter Seiderer <ps.report@gmx.net>
 [rebased on 1.3.0]
 Signed-off-by: Antoine Coutant <antoine.coutant@smile.fr>
+[Rebased for f754c4258805056ed7be09830d96af45215d341b]
+Signed-off-by: minicx <minicx@disroot.org>
 ---
  mesonbuild/dependencies/pkgconfig.py | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

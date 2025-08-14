@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PYTHON_APSCHEDULER
+	bool "python-apscheduler"
+	select BR2_PACKAGE_PYTHON_TZLOCAL
+	select BR2_PACKAGE_PYTHON_TENACITY
+	select BR2_PACKAGE_PYTHON_ATTRS
+	select BR2_PACKAGE_PYTHON_ANYIO
+	help
+		Task scheduling library for Python
+
+		https://pypi.org/pypi/APScheduler

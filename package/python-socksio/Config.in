@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_SOCKSIO
+	bool "python-socksio"
+	help
+	  Sans-I/O implementation of SOCKS4, SOCKS4A, and SOCKS5.
+
+	  https://github.com/sethmlarson/socksio

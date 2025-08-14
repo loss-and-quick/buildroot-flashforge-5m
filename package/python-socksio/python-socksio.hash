@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/socksio/json
+md5  c842dbff834af52dd070ecf297a14337  socksio-1.0.0.tar.gz
+sha256  f88beb3da5b5c38b9890469de67d0cb0f9d494b78b106ca1845f96c10b91c4ac  socksio-1.0.0.tar.gz
+# Locally computed sha256 checksums
+sha256  7087f0f5f7c2993f3c4ed117baa3622c1063626e7c692e9ea116475b5fc1396c  LICENSE

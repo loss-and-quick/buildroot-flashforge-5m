@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_FLIT_SCM
+	bool "python-flit-scm"
+	select BR2_PACKAGE_PYTHON_FLIT_CORE
+	select BR2_PACKAGE_PYTHON_SETUPTOOLS_SCM
+	select BR2_PACKAGE_PYTHON_TOMLI
+	help
+		A PEP 518 build backend that uses setuptools_scm to generate a version file from your version control system, then flit to build the package.

@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/aiolimiter/json
+md5  82306409ed14b7d46929606143a7ee65  aiolimiter-1.2.1.tar.gz
+sha256  e02a37ea1a855d9e832252a105420ad4d15011505512a1a1d814647451b5cca9  aiolimiter-1.2.1.tar.gz
+# Locally computed sha256 checksums
+sha256  738bacef848b9e5890c0558c71fe86510289a00e0de77686fcd4b6f0b1731fee  LICENSE.txt

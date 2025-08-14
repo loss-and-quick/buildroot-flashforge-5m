@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_FFMPEGCV
+	bool "python-ffmpegcv"
+	select BR2_PACKAGE_FFMPEG
+	select BR2_PACKAGE_PYTHON_NUMPY
+	help
+	  The ffmpegcv is a ffmpeg backbone for open-cv like Video Reader and Writer
+
+	  https://pypi.org/pypi/ffmpegcv

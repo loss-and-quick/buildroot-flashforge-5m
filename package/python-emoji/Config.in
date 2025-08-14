@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_EMOJI
+	bool "python-emoji"
+	help
+		emoji terminal output for Python
+
+		https://pypi.org/project/emoji/

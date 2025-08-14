@@ -1,0 +1,5 @@
+# md5, sha256 from https://pypi.org/pypi/emoji/json
+md5  26029c98ab839799f2416ef9f807c9f7  emoji-2.14.1.tar.gz
+sha256  f8c50043d79a2c1410ebfae833ae1868d5941a67a6cd4d18377e2eb0bd79346b  emoji-2.14.1.tar.gz
+# Locally computed sha256 checksums
+sha256  aabda43892145b1aaa71d530ebc9b8d3586262350549c5b929ecc21439fc2492  LICENSE.txt

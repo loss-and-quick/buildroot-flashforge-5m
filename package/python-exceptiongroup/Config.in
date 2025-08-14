@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_EXCEPTIONGROUP
+	bool "python-exceptiongroup"
+	select BR2_PACKAGE_PYTHON_TYPING_EXTENSIONS # runtime
+	help
+		Backport of PEP 654 (exception groups)
+
+		https://pypi.org/project/exceptiongroup

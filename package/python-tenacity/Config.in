@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_TENACITY
+	bool "python-tenacity"
+	help
+	  Retry code until it succeeds.
+
+	  https://github.com/jd/tenacity

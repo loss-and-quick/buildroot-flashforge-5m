@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_TELEGRAM_BOT
+	bool "python-telegram-bot"
+	select BR2_PACKAGE_PYTHON_HTTPX # runtime
+	help
+	  We have made you a wrapper you can't refuse.
+
+	  https://python-telegram-bot.org

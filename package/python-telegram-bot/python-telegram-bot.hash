@@ -1,0 +1,6 @@
+# md5, sha256 from https://pypi.org/pypi/python-telegram-bot/json
+md5  b82776c05debd70d00f597892337842e  python_telegram_bot-22.2.tar.gz
+sha256  20dc096673961b849c041814d9618a3c7036dcca73015e576293600234457482  python_telegram_bot-22.2.tar.gz
+# Locally computed sha256 checksums
+sha256  ad8f8603e843f8973885313e3da5e63e5d522d50c3a876875d4b96bbfb49e112  LICENSE
+sha256  36ffd9dc085d529a7e60e1276d73ae5a030b020313e6c5408593a6ae2af39673  examples/LICENSE.txt
